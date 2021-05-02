@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      *,
+      :after,
+      :before {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #cecece;
+      }
+      input[type="checkbox"] {
+        width: 200px;
+        height: 200px;
+        -webkit-appearance: none;
+        box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.5),
+          10px 10px 15px rgba(0, 0, 0, 0.12);
+        outline: none;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        display: flex;
+        border: 8px solid #cecece;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+      }
+      input[type="checkbox"]:after {
+        font-family: FontAwesome;
+        content: "\f011";
+        font-size: 70px;
+        color: rgba(0, 255, 221, 0.5);
+      }
+      input[type="checkbox"]:checked {
+        transition: all 0.3s ease-in-out;
+        box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.5),
+          10px 10px 15px rgba(70, 70, 70, 0.12),
+          inset -8px -8px 15px rgba(255, 255, 255, 0.5),
+          inset 10px 10px 15px rgba(0, 0, 0, 0.12);
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+      }
+      input[type="checkbox"]:checked:after {
+        color: #ff7b00;
+      }
+      nav {
+        padding: 10px;
+        border-radius: 15px;
+        margin: 10px 15px 0 15px;
+        margin-top: 10px;
+        /* border: 1px red solid; */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav-shadow1 {
+        box-shadow: -7px -5px 7px rgba(255, 255, 255, 0.5),
+          5px 5px 7px rgba(70, 70, 70, 0.3);
+      }
+      .nav-shadow2 {
+        box-shadow: -7px -5px 7px rgba(0, 255, 221, 0.5),
+          5px 5px 7px rgba(0, 0, 0, 0.7);
+      }
+      .btn-b {
+        cursor: pointer;
+        position: relative;
+        width: 70px;
+        border: 2px solid #cecece;
+        height: 35px;
+        border-radius: 17px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+      }
+      .shadow1 {
+        box-shadow: -4px -4px 4px rgba(255, 255, 255, 0.5),
+          4px 4px 4px rgba(70, 70, 70, 0.2),
+          inset -3px -5px 4px rgba(255, 255, 255, 0.5),
+          inset 3px 5px 4px rgba(70, 70, 70, 0.2);
+      }
+      .shadow2 {
+        border: 2px solid rgba(0, 255, 221, 0.5);
+        box-shadow: -4px -4px 4px rgba(0, 255, 221, 0.5),
+          4px 4px 4px rgba(70, 70, 70, 0.2),
+          inset -3px -5px 4px rgba(0, 0, 0, 0.7),
+          inset 3px 5px 4px rgba(70, 70, 70, 0.2);
+      }
+      .btn {
+        background: #cecece;
+        width: 35px;
+        height: 32px;
+        border-radius: 15px;
+      }
+      .menu {
+        box-shadow: -4px -4px 4px rgba(255, 255, 255, 0.5),
+          4px 4px 4px rgba(70, 70, 70, 0.3);
+        border-radius: 10px;
+      }
+      .menu-shadow {
+        box-shadow: -4px -4px 4px rgba(0, 221, 221, 0.5),
+          4px 4px 4px rgba(0, 0, 0, 0.7);
+      }
+      .menu ul {
+        display: flex;
+        list-style-type: none;
+      }
+      .menu ul li {
+        transition: all 0.3s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px rgb(0, 217, 255) solid; */
+        height: 40px;
+        text-decoration: none;
+        color: black;
+        font-family: monospace;
+      }
+      .menu ul li a {
+        transition: all 0.3s ease-in-out;
+        color: black;
+        text-decoration: none;
+        padding: 0 10px 0 10px;
+        font-size: 15px;
+        font-weight: bold;
+      }
+      .menu ul li:first-child {
+        border-radius: 10px 0 0 10px;
+      }
+      .menu ul li:last-child {
+        border-radius: 0 10px 10px 0;
+      }
+      .light {
+        left: 80px;
+        position: absolute;
+        color: black;
+        font-family: monospace;
+        font-size: 15px;
+        font-weight: bold;
+        width: 200px;
+      }
+      .dig {
+        transition: all 0.3s ease-in-out;
+        box-shadow: inset -4px -4px 4px rgba(255, 255, 255, 0.5),
+          inset 4px 4px 4px rgba(70, 70, 70, 0.2);
+        transition: all 0.3s ease-in-out;
+      }
+      .dig2 {
+        transition: all 0.3s ease-in-out;
+        box-shadow: inset -4px -4px 4px rgba(0, 255, 221, 0.5),
+          inset 4px 4px 4px rgba(0, 0, 0, 0.7);
+        transition: all 0.3s ease-in-out;
+      }
+      .up {
+        transition: all 0.3s ease-in-out;
+        text-shadow: -4px -4px 4px rgba(255, 255, 255, 0.5),
+          4px 4px 4px rgba(70, 70, 70, 0.2);
+      }
+      .up2 {
+        transition: all 0.3s ease-in-out;
+        text-shadow: -4px -4px 4px rgba(0, 255, 221, 0.5),
+          4px 4px 4px rgba(0, 0, 0, 0.7);
+      }
+      .btn-shadow {
+        transition: all 0.3s ease-in-out;
+        box-shadow: 5px 3px 7px rgba(70, 70, 70, 0.2);
+      }
+      .btn-shadow1 {
+        transition: all 0.3s ease-in-out;
+        box-shadow: -5px 3px 7px rgba(0, 0, 0, 0.7);
+        margin-left: 31px;
+      }
+      .rotate {
+        transition: all 0.3s ease-in-out;
+      }
+      .line {
+        text-decoration: underline;
+      }
+      .color {
+        color: rgba(0, 255, 221, 0.5);
+      }
+      .back {
+        background: rgba(0, 255, 221, 0.5);
+      }
+      .body {
+        background: #252525;
+      }
+    </style>
+    <title>SIM</title>
+  </head>
+  <body>
+    <nav class="nav-shadow1">
+      <div class="btn-b shadow1">
+        <div class="btn btn-shadow"></div>
+        <div class="light">
+          <span class="lig line up">Light</span><span class="up dir"> |</span
+          ><span class="dar up"> Dark</span>
+        </div>
+      </div>
+      <div class="menu">
+        <ul>
+          <li id="home" class="dig"><a class="home up" href="#">Home</a></li>
+          <li id="port"><a href="#" class="port">Portfolio</a></li>
+          <li id="ser"><a href="#" class="ser">Services</a></li>
+          <li id="hel"><a href="#" class="hel">Help</a></li>
+          <li id="abo"><a href="#" class="abo">About Us</a></li>
+          <li id="you">
+            <a href="#" class="you">
+              <span style="color: rgb(218, 0, 0)">You</span><span>Tube</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <input type="checkbox" />
+    <script src="jQuery.min.js"></script>
+    <script>
+
+
+
+            $(function () {
+              var show = true;
+              $(".btn-b").click(function () {
+                $("nav").toggleClass("nav-shadow1");
+                $("nav").toggleClass("nav-shadow2");
+                $(".btn-b").toggleClass("shadow1");
+                $(".btn-b").toggleClass("shadow2");
+                $(".btn").toggleClass("btn-shadow, btn-shadow1");
+                $(".btn").toggleClass("back");
+                $(".lig").toggleClass("line , color , up , up2");
+                $(".dar").toggleClass("line , color , up , up2");
+                $(".dir").toggleClass("color , up , up2");
+                $("body").toggleClass("body");
+                $(".menu").toggleClass("menu-shadow");
+              });
+              $("#home").click(function () {
+                $("#home").toggleClass("dig");
+                $(".home").toggleClass("up");
+                $("#port").removeClass("dig");
+                $(".port").removeClass("up");
+                $("#ser").removeClass("dig");
+                $(".ser").removeClass("up");
+                $("#hel").removeClass("dig");
+                $(".hel").removeClass("up");
+                $("#abo").removeClass("dig");
+                $(".abo").removeClass("up");
+                $("#you").removeClass("dig");
+                $(".you").removeClass("up");
+              });
+              $("#port").click(function () {
+                $("#port").toggleClass("dig");
+                $(".port").toggleClass("up");
+                $("#home").removeClass("dig");
+                $(".home").removeClass("up");
+                $("#ser").removeClass("dig");
+                $(".ser").removeClass("up");
+                $("#hel").removeClass("dig");
+                $(".hel").removeClass("up");
+                $("#abo").removeClass("dig");
+                $(".abo").removeClass("up");
+                $("#you").removeClass("dig");
+                $(".you").removeClass("up");
+              });
+              $("#ser").click(function () {
+                $("#ser").toggleClass("dig");
+                $(".ser").toggleClass("up");
+                $("#port").removeClass("dig");
+                $(".port").removeClass("up");
+                $("#home").removeClass("dig");
+                $(".home").removeClass("up");
+                $("#hel").removeClass("dig");
+                $(".hel").removeClass("up");
+                $("#abo").removeClass("dig");
+                $(".abo").removeClass("up");
+                $("#you").removeClass("dig");
+                $(".you").removeClass("up");
+              });
+              $("#hel").click(function () {
+                $("#hel").toggleClass("dig");
+                $(".hel").toggleClass("up");
+                $("#ser").removeClass("dig");
+                $(".ser").removeClass("up");
+                $("#port").removeClass("dig");
+                $(".port").removeClass("up");
+                $("#home").removeClass("dig");
+                $(".home").removeClass("up");
+                $("#abo").removeClass("dig");
+                $(".abo").removeClass("up");
+                $("#you").removeClass("dig");
+                $(".you").removeClass("up");
+              });
+              $("#abo").click(function () {
+                $("#abo").toggleClass("dig");
+                $(".abo").toggleClass("up");
+                $("#hel").removeClass("dig");
+                $(".hel").removeClass("up");
+                $("#ser").removeClass("dig");
+                $(".ser").removeClass("up");
+                $("#port").removeClass("dig");
+                $(".port").removeClass("up");
+                $("#home").removeClass("dig");
+                $(".home").removeClass("up");
+                $("#you").removeClass("dig");
+                $(".you").removeClass("up");
+              });
+              $("#you").click(function () {
+                $("#you").toggleClass("dig");
+                $(".you").toggleClass("up");
+                $("#abo").removeClass("dig");
+                $(".abo").removeClass("up");
+                $("#hel").removeClass("dig");
+                $(".hel").removeClass("up");
+                $("#ser").removeClass("dig");
+                $(".ser").removeClass("up");
+                $("#port").removeClass("dig");
+                $(".port").removeClass("up");
+                $("#home").removeClass("dig");
+                $(".home").removeClass("up");
+              });
+            });
+    </script>
+  </body>
+</html>
